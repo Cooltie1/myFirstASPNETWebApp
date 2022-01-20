@@ -1,16 +1,22 @@
-﻿$("#gradeForm").submit(function (event) {
+﻿$("#gradeForm").submit( function() {
+    $.post("", { name: "" }, function (event)
+    {
+    }
+    )
+})
+
+
+function calculate(event) {
 
     assignments = $("#inputAssignments").val()
     quizzes = $("#inputQuizzes").val()
     intex = $("#inputIntex").val()
     ec = $("#inputEC").val()
-
-
+    
     assignments = assignments * 0.4367
     quizzes = quizzes * 0.131
     intex = intex * 0.4323
     ec = ec * 0.022
-
 
     grade = assignments + quizzes + intex + ec
     gradeS = ""
@@ -40,13 +46,18 @@
     } else {
         gradeS = "A"
     }
-    
 
-    
+    gradeMsg = "Your Grade: " + gradeS + " (" + grade.toFixed(2) + "%)"
 
-    gradeMsg = "Your Grade: " + gradeS +" ("+ grade.toFixed(2) + "%)"
+    sessionStorage.setItem("gradeMsg", gradeMsg)
 
-    $("#grade").html(gradeMsg)
-   event.preventDefault()
 }
-    )
+
+window.onload = function () {
+    if (window.sessionStorage) {
+        $("#grade").html(sessionStorage.getItem("gradeMsg"))
+    } else {
+        
+    }
+    
+}

@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+@model CalculatorModel;
+
+
+<h3>Grade Calculator</h3>
+
+<form id="gradeForm" method="post" >
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="inputAssignments">Assignments</label>
+            <input type="number" class="form-control" id="inputAssignments" asp-for="Assignments" placeholder="Grade Percentage" >
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputQuizzes">Quizzes</label>
+            <input type="number" class="form-control" id="inputQuizzes" asp-for="Quizzes" placeholder="Grade Percentage" >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="inputIntex">Intex</label>
+            <input type="number" class="form-control" id="inputIntex" asp-for="Intex" placeholder="Grade Percentage" >
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputEC">Extra Credit</label>
+            <input type="number" class="form-control" id="inputEC" asp-for="EC" placeholder="Grade Percentage" >
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="btnCalc" onclick="calculate(event)">Calculate</button>
+    <div asp-validation-summary="All"></div>
+</form>
+<br />
+<h3 id="grade"></h3>
